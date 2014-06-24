@@ -37,4 +37,16 @@ class SwiftTKCollection
     {
         return array.reduce(start, function)
     }
+    
+    class func find<T>(array: T[], function: (T) -> Bool) -> T?
+    {
+        for (index, elem: (T)) in enumerate(array)
+        {
+            if(function(elem))
+            {
+                return elem
+            }
+        }
+        return nil
+    }
 }

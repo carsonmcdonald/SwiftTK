@@ -75,4 +75,19 @@ class SwiftTKCollectionTests: XCTestCase
         
         XCTAssertEqualObjects(result_str, " 10 40 20 30")
     }
+    
+    func testFindArray()
+    {
+        let result_found: Int! = STC.find([1, 6, 5, 10, 9]) { (v) in
+            return v % 2 == 0
+        }
+        
+        XCTAssertEqualObjects(result_found, 6)
+        
+        let result_not_found: Int! = STC.find([1, 5, 9]) { (v) in
+            return v % 2 == 0
+        }
+        
+        XCTAssertEqualObjects(result_not_found, nil)
+    }
 }
