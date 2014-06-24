@@ -60,4 +60,19 @@ class SwiftTKCollectionTests: XCTestCase
             Swift.contains(result, "c == 20") &&
             Swift.contains(result, "d == 30"))
     }
+    
+    func testReduceArray()
+    {
+        let result_int: Int = STC.reduce([10, 40, 20, 30], start: 100) { (m, v) in
+            return m + v
+        }
+        
+        XCTAssertEqualObjects(result_int, 200)
+        
+        let result_str: String = STC.reduce(["10", "40", "20", "30"], start: "") { (m, v) in
+            return "\(m) \(v)"
+        }
+        
+        XCTAssertEqualObjects(result_str, " 10 40 20 30")
+    }
 }

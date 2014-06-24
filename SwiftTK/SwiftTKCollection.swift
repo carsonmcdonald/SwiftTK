@@ -32,4 +32,9 @@ class SwiftTKCollection
         }
         return result
     }
+    
+    class func reduce<T, M>(array: T[], start: M, function: ((M), (T)) -> M) -> M
+    {
+        return array.reduce(start, function)
+    }
 }
