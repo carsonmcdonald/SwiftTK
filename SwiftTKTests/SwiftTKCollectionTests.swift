@@ -39,4 +39,25 @@ class SwiftTKCollectionTests: XCTestCase
             Swift.contains(values, 20) &&
             Swift.contains(values, 30))
     }
+    
+    func testMapArray()
+    {
+        let result: String[] = STC.map([10, 40, 20, 30]) { (v) in
+            return "\(v)"
+        }
+        
+        XCTAssertEqualObjects(result, ["10", "40", "20", "30"])
+    }
+
+    func testMapHash()
+    {
+        let result: String[] = STC.map(["a": 10, "b": 40, "c": 20, "d": 30]) { (k, v) in
+            return "\(k) == \(v)"
+        }
+        
+        XCTAssertTrue(Swift.contains(result, "a == 10") &&
+            Swift.contains(result, "b == 40") &&
+            Swift.contains(result, "c == 20") &&
+            Swift.contains(result, "d == 30"))
+    }
 }

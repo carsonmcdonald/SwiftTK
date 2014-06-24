@@ -17,4 +17,19 @@ class SwiftTKCollection
             function(key, value)
         }
     }
+    
+    class func map<T, R>(array: T[], function: (T) -> R) -> R[]
+    {
+        return array.map(function)
+    }
+    
+    class func map<KT, VT, R>(hash: Dictionary<KT, VT>, function: ((KT), (VT)) -> R) -> R[]
+    {
+        var result: R[] = []
+        for (key: KT, value: VT) in hash
+        {
+            result.append(function(key, value))            
+        }
+        return result
+    }
 }
