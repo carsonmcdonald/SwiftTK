@@ -49,4 +49,9 @@ class SwiftTKCollection
         }
         return nil
     }
+    
+    class func filter<T>(array: T[], function: (T) -> Bool) -> T[]
+    {
+        return array.filter(function)
+    }
 }

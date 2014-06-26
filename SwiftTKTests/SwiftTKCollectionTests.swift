@@ -90,4 +90,13 @@ class SwiftTKCollectionTests: XCTestCase
         
         XCTAssertEqualObjects(result_not_found, nil)
     }
+    
+    func testFilterArray()
+    {
+        let result: Int[] = STC.filter([1, 6, 5, 10, 9]) { (v) in
+            return v % 2 == 0
+        }
+        
+        XCTAssertEqualObjects(result, [6, 10])
+    }
 }
