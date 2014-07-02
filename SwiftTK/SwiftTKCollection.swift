@@ -54,4 +54,30 @@ class SwiftTKCollection
     {
         return array.filter(function)
     }
+    
+    class func _where<KT, VT: Equatable>(array: Array<Dictionary<KT, VT>>, predicate: Dictionary<KT, VT>) -> Dictionary<KT, VT>[]
+    {
+        var result: Dictionary<KT, VT>[] = []
+        for (index, elem: (Dictionary<KT, VT>)) in enumerate(array)
+        {
+            var found: Bool = true
+            for (key: KT, value: VT) in predicate
+            {
+                if(elem[key] && elem[key]! == value)
+                {
+                    found = true
+                }
+                else
+                {
+                    found = false
+                    break
+                }
+            }
+            if(found)
+            {
+                result.append(elem)
+            }
+        }
+        return result
+    }
 }

@@ -99,4 +99,26 @@ class SwiftTKCollectionTests: XCTestCase
         
         XCTAssertEqualObjects(result, [6, 10])
     }
+    
+    func testWhereHash()
+    {
+        var input: Array<Dictionary<String, String>> = []
+        
+        input.append(["org": "Acme", "device": "anvil",  "price": "1.50"])
+        input.append(["org": "Acme", "device": "spoon",  "price": "3.00"])
+        input.append(["org": "Foo",  "device": "bar",    "price": "7.20"])
+        input.append(["org": "Acme", "device": "shovel", "price": "0.75"])
+        
+        var predicate: Dictionary<String, String> = ["org": "Acme"]
+
+        let result_one: Array<Dictionary<String, String>> = STC._where(input, predicate: predicate)
+
+        var expected_result: Array<Dictionary<String, String>> = []
+        
+        expected_result.append(["org": "Acme", "device": "anvil",  "price": "1.50"])
+        expected_result.append(["org": "Acme", "device": "spoon",  "price": "3.00"])
+        expected_result.append(["org": "Acme", "device": "shovel", "price": "0.75"])
+        
+        XCTAssertEqualObjects(result_one, expected_result)
+    }
 }
