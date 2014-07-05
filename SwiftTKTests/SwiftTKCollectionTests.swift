@@ -143,4 +143,13 @@ class SwiftTKCollectionTests: XCTestCase
         
         XCTAssertNil(result_two)
     }
+    
+    func testRejectArray()
+    {
+        let result: Int[] = STC.reject([1, 6, 5, 10, 9]) { (v) in
+            return v % 2 == 0
+        }
+        
+        XCTAssertEqualObjects(result, [1, 5, 9])
+    }
 }

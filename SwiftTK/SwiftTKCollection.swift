@@ -105,4 +105,17 @@ class SwiftTKCollection
         }
         return nil
     }
+    
+    class func reject<T>(array: T[], function: (T) -> Bool) -> T[]
+    {
+        var result: T[] = []
+        for (index, elem: (T)) in enumerate(array)
+        {
+            if(!function(elem))
+            {
+                result.append(elem)
+            }
+        }
+        return result
+    }
 }
