@@ -152,4 +152,19 @@ class SwiftTKCollectionTests: XCTestCase
         
         XCTAssertEqualObjects(result, [1, 5, 9])
     }
+    
+    func testEveryArray()
+    {
+        let result_one: Bool = STC.every([1, 6, 5, 10, 9]) { (v) in
+            return v % 2 == 0
+        }
+        
+        XCTAssertFalse(result_one)
+        
+        let result_two: Bool = STC.every([2, 4, 6]) { (v) in
+            return v % 2 == 0
+        }
+        
+        XCTAssertTrue(result_two)
+    }
 }

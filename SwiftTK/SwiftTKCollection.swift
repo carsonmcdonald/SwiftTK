@@ -118,4 +118,16 @@ class SwiftTKCollection
         }
         return result
     }
+    
+    class func every<T>(array: T[], function: (T) -> Bool) -> Bool
+    {
+        for (index, elem: (T)) in enumerate(array)
+        {
+            if(!function(elem))
+            {
+                return false
+            }
+        }
+        return true
+    }
 }
