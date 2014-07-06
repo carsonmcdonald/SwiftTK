@@ -167,4 +167,19 @@ class SwiftTKCollectionTests: XCTestCase
         
         XCTAssertTrue(result_two)
     }
+    
+    func testSomeArray()
+    {
+        let result_one: Bool = STC.some([1, 9]) { (v) in
+            return v % 2 == 0
+        }
+        
+        XCTAssertFalse(result_one)
+        
+        let result_two: Bool = STC.some([2, 4, 6]) { (v) in
+            return v % 2 == 0
+        }
+        
+        XCTAssertTrue(result_two)
+    }
 }

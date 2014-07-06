@@ -130,4 +130,16 @@ class SwiftTKCollection
         }
         return true
     }
+    
+    class func some<T>(array: T[], function: (T) -> Bool) -> Bool
+    {
+        for (index, elem: (T)) in enumerate(array)
+        {
+            if(function(elem))
+            {
+                return true
+            }
+        }
+        return false
+    }
 }
