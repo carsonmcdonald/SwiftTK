@@ -142,4 +142,16 @@ class SwiftTKCollection
         }
         return false
     }
+    
+    class func contains<T: Equatable>(array: T[], value: T) -> Bool
+    {
+        for (index, elem: (T)) in enumerate(array)
+        {
+            if(elem == value)
+            {
+                return true
+            }
+        }
+        return false
+    }
 }

@@ -182,4 +182,15 @@ class SwiftTKCollectionTests: XCTestCase
         
         XCTAssertTrue(result_two)
     }
+    
+    func testContainsArray()
+    {
+        let result_one: Bool = STC.contains([1, 9], value: 7)
+        
+        XCTAssertFalse(result_one)
+        
+        let result_two: Bool = STC.contains([2, 4, 6], value: 4)
+        
+        XCTAssertTrue(result_two)
+    }
 }
