@@ -2,7 +2,7 @@ import Foundation
 
 class SwiftTKCollection
 {
-    class func each<T>(array: T[], function: (Int, (T)) -> ())
+    class func each<T>(array: [T], function: (Int, (T)) -> ())
     {
         for (index, elem: (T)) in enumerate(array)
         {
@@ -18,14 +18,14 @@ class SwiftTKCollection
         }
     }
     
-    class func map<T, R>(array: T[], function: (T) -> R) -> R[]
+    class func map<T, R>(array: [T], function: (T) -> R) -> [R]
     {
         return array.map(function)
     }
     
-    class func map<KT, VT, R>(hash: Dictionary<KT, VT>, function: ((KT), (VT)) -> R) -> R[]
+    class func map<KT, VT, R>(hash: Dictionary<KT, VT>, function: ((KT), (VT)) -> R) -> [R]
     {
-        var result: R[] = []
+        var result: [R] = []
         for (key: KT, value: VT) in hash
         {
             result.append(function(key, value))            
@@ -33,12 +33,12 @@ class SwiftTKCollection
         return result
     }
     
-    class func reduce<T, M>(array: T[], start: M, function: ((M), (T)) -> M) -> M
+    class func reduce<T, M>(array: [T], start: M, function: ((M), (T)) -> M) -> M
     {
         return array.reduce(start, function)
     }
     
-    class func find<T>(array: T[], function: (T) -> Bool) -> T?
+    class func find<T>(array: [T], function: (T) -> Bool) -> T?
     {
         for (index, elem: (T)) in enumerate(array)
         {
@@ -50,14 +50,14 @@ class SwiftTKCollection
         return nil
     }
     
-    class func filter<T>(array: T[], function: (T) -> Bool) -> T[]
+    class func filter<T>(array: [T], function: (T) -> Bool) -> [T]
     {
         return array.filter(function)
     }
     
-    class func _where<KT, VT: Equatable>(array: Array<Dictionary<KT, VT>>, predicate: Dictionary<KT, VT>) -> Dictionary<KT, VT>[]
+    class func _where<KT, VT: Equatable>(array: Array<Dictionary<KT, VT>>, predicate: Dictionary<KT, VT>) -> [Dictionary<KT, VT>]
     {
-        var result: Dictionary<KT, VT>[] = []
+        var result: [Dictionary<KT, VT>] = []
         for (index, elem: (Dictionary<KT, VT>)) in enumerate(array)
         {
             var found: Bool = true
@@ -106,9 +106,9 @@ class SwiftTKCollection
         return nil
     }
     
-    class func reject<T>(array: T[], function: (T) -> Bool) -> T[]
+    class func reject<T>(array: [T], function: (T) -> Bool) -> [T]
     {
-        var result: T[] = []
+        var result: [T] = []
         for (index, elem: (T)) in enumerate(array)
         {
             if(!function(elem))
@@ -119,7 +119,7 @@ class SwiftTKCollection
         return result
     }
     
-    class func every<T>(array: T[], function: (T) -> Bool) -> Bool
+    class func every<T>(array: [T], function: (T) -> Bool) -> Bool
     {
         for (index, elem: (T)) in enumerate(array)
         {
@@ -131,7 +131,7 @@ class SwiftTKCollection
         return true
     }
     
-    class func some<T>(array: T[], function: (T) -> Bool) -> Bool
+    class func some<T>(array: [T], function: (T) -> Bool) -> Bool
     {
         for (index, elem: (T)) in enumerate(array)
         {
@@ -143,7 +143,7 @@ class SwiftTKCollection
         return false
     }
     
-    class func contains<T: Equatable>(array: T[], value: T) -> Bool
+    class func contains<T: Equatable>(array: [T], value: T) -> Bool
     {
         for (index, elem: (T)) in enumerate(array)
         {

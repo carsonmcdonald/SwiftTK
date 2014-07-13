@@ -8,8 +8,8 @@ class SwiftTKCollectionTests: XCTestCase
 {
     func testEachArray()
     {
-        var indices: Int[] = []
-        var values: Int[] = []
+        var indices: [Int] = []
+        var values: [Int] = []
         
         STC.each([10, 40, 20, 30]) { (i, v) in
             indices.append(i)
@@ -22,8 +22,8 @@ class SwiftTKCollectionTests: XCTestCase
     
     func testEachHash()
     {
-        var keys: String[] = []
-        var values: Int[] = []
+        var keys: [String] = []
+        var values: [Int] = []
         
         STC.each(["a": 10, "b": 40, "c": 20, "d": 30]) { (i, v) in
             keys.append(i)
@@ -42,7 +42,7 @@ class SwiftTKCollectionTests: XCTestCase
     
     func testMapArray()
     {
-        let result: String[] = STC.map([10, 40, 20, 30]) { (v) in
+        let result: [String] = STC.map([10, 40, 20, 30]) { (v) in
             return "\(v)"
         }
         
@@ -51,7 +51,7 @@ class SwiftTKCollectionTests: XCTestCase
 
     func testMapHash()
     {
-        let result: String[] = STC.map(["a": 10, "b": 40, "c": 20, "d": 30]) { (k, v) in
+        let result: [String] = STC.map(["a": 10, "b": 40, "c": 20, "d": 30]) { (k, v) in
             return "\(k) == \(v)"
         }
         
@@ -88,12 +88,12 @@ class SwiftTKCollectionTests: XCTestCase
             return v % 2 == 0
         }
         
-        XCTAssertEqualObjects(result_not_found, nil)
+        XCTAssertNil(result_not_found)
     }
     
     func testFilterArray()
     {
-        let result: Int[] = STC.filter([1, 6, 5, 10, 9]) { (v) in
+        let result: [Int] = STC.filter([1, 6, 5, 10, 9]) { (v) in
             return v % 2 == 0
         }
         
@@ -146,7 +146,7 @@ class SwiftTKCollectionTests: XCTestCase
     
     func testRejectArray()
     {
-        let result: Int[] = STC.reject([1, 6, 5, 10, 9]) { (v) in
+        let result: [Int] = STC.reject([1, 6, 5, 10, 9]) { (v) in
             return v % 2 == 0
         }
         
