@@ -15,9 +15,9 @@ class SwiftTKCollectionTests: XCTestCase
             indices.append(i)
             values.append(v)
         }
-        
-        XCTAssertEqualObjects(indices, [0, 1, 2, 3])
-        XCTAssertEqualObjects(values, [10, 40, 20, 30])
+
+        XCTAssertTrue(indices == [0, 1, 2, 3])
+        XCTAssertTrue(values == [10, 40, 20, 30])
     }
     
     func testEachHash()
@@ -46,7 +46,7 @@ class SwiftTKCollectionTests: XCTestCase
             return "\(v)"
         }
         
-        XCTAssertEqualObjects(result, ["10", "40", "20", "30"])
+        XCTAssertTrue(result == ["10", "40", "20", "30"])
     }
 
     func testMapHash()
@@ -67,13 +67,13 @@ class SwiftTKCollectionTests: XCTestCase
             return m + v
         }
         
-        XCTAssertEqualObjects(result_int, 200)
+        XCTAssertTrue(result_int == 200)
         
         let result_str: String = STC.reduce(["10", "40", "20", "30"], start: "") { (m, v) in
             return "\(m) \(v)"
         }
         
-        XCTAssertEqualObjects(result_str, " 10 40 20 30")
+        XCTAssertTrue(result_str == " 10 40 20 30")
     }
     
     func testFindArray()
@@ -82,7 +82,7 @@ class SwiftTKCollectionTests: XCTestCase
             return v % 2 == 0
         }
         
-        XCTAssertEqualObjects(result_found, 6)
+        XCTAssertTrue(result_found == 6)
         
         let result_not_found: Int! = STC.find([1, 5, 9]) { (v) in
             return v % 2 == 0
@@ -97,7 +97,7 @@ class SwiftTKCollectionTests: XCTestCase
             return v % 2 == 0
         }
         
-        XCTAssertEqualObjects(result, [6, 10])
+        XCTAssertTrue(result == [6, 10])
     }
     
     func testWhereHash()
@@ -119,7 +119,7 @@ class SwiftTKCollectionTests: XCTestCase
         expected_result.append(["org": "Acme", "device": "spoon",  "price": "3.00"])
         expected_result.append(["org": "Acme", "device": "shovel", "price": "0.75"])
         
-        XCTAssertEqualObjects(result_one, expected_result)
+        XCTAssertTrue(result_one == expected_result)
     }
     
     func testFindWhereHash()
@@ -135,7 +135,7 @@ class SwiftTKCollectionTests: XCTestCase
         
         let result_one: Dictionary<String, String>? = STC.findWhere(input, predicate: predicate)
         
-        XCTAssertEqualObjects(result_one, ["org": "Acme", "device": "anvil",  "price": "1.50"])
+        XCTAssertTrue(result_one! == ["org": "Acme", "device": "anvil",  "price": "1.50"])
         
         predicate = ["nothing": "Acme"]
         
@@ -150,7 +150,7 @@ class SwiftTKCollectionTests: XCTestCase
             return v % 2 == 0
         }
         
-        XCTAssertEqualObjects(result, [1, 5, 9])
+        XCTAssertTrue(result == [1, 5, 9])
     }
     
     func testEveryArray()
